@@ -24,10 +24,6 @@ PDF Toolkit helps users merge documents, split PDFs by page ranges, extract sele
 
 Isaac Gazula
 
-## Copyright
-
-© PDF Toolkit. All Rights Reserved.
-
 ## Installation
 
 1. Install Python 3.11 or newer.
@@ -99,3 +95,5 @@ PDF Toolkit uses pypdf's available stream compression and PDF rewriting features
 Application: PDF Toolkit  
 Created by: Isaac Gazula  
 Version: 1.0
+
+© PDF Toolkit. All Rights Reserved.
