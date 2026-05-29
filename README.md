@@ -1,90 +1,101 @@
 # PDF Toolkit
 
-Made by Isaac Gazula.
+A modern desktop utility for managing and editing PDF files.
 
-PDF Toolkit copyright reserved.
-
-PDF Toolkit is a modern Python 3.11+ desktop app for merging, splitting, extracting, rotating, and optimizing PDF files. Built with PyQt6 and pypdf, it features drag-and-drop support, page previews, recent files, olive green light and dark themes, progress indicators, and a clean tabbed interface.
+PDF Toolkit helps users merge documents, split PDFs by page ranges, extract selected pages, rotate documents with plain-language controls, and create optimized PDF copies. The app uses a clean olive-green interface with drag-and-drop support, page count previews, progress indicators, recent files, and light/dark mode.
 
 ## Features
 
 - Merge multiple PDFs into one file
-- Split a PDF into multiple PDFs by page ranges
-- Extract selected pages into a new PDF
-- Rotate all pages by 90, 180, or 270 degrees
-- Optimize PDFs with pypdf's available stream compression
+- Split PDFs by page ranges
+- Extract selected pages
+- Rotate PDFs with friendly turn-left, turn-right, and flip options
+- Basic PDF optimization
 - Drag-and-drop PDF selection
-- Page count previews
+- PDF page count previews
 - Recent files list
-- Olive green light and dark themes
+- Olive green light and dark mode
 - Remembered last folder
-- Keyboard shortcut: `Ctrl+O` to add PDFs to the current tab
+- Progress indicators and status messages
 - Background workers for long-running operations
 - Friendly validation for invalid, encrypted, empty, or missing PDFs
-- Plain-language rotation choices such as turn right, turn left, and flip upside down
+
+## Author
+
+Isaac Gazula
+
+## Copyright
+
+© PDF Toolkit. All Rights Reserved.
 
 ## Installation
 
-```bash
-cd pdf_toolkit
-python -m venv .venv
-.venv\Scripts\activate
+1. Install Python 3.11 or newer.
+2. Install the dependencies:
+
+```powershell
 pip install -r requirements.txt
 ```
 
-On macOS or Linux, activate the environment with:
+3. Run the application:
 
-```bash
-source .venv/bin/activate
-```
-
-## Run
-
-```bash
+```powershell
 python main.py
 ```
 
-## Project Structure
+If you prefer a virtual environment:
 
-```text
-pdf_toolkit/
-|-- main.py
-|-- ui/
-|   |-- main_window.py
-|   `-- widgets.py
-|-- services/
-|   |-- common.py
-|   |-- merger.py
-|   |-- splitter.py
-|   |-- extractor.py
-|   |-- rotator.py
-|   `-- compressor.py
-|-- assets/
-|-- requirements.txt
-`-- README.md
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
 ```
 
-## Architecture
+## Usage
 
-The application separates GUI logic from PDF operations:
+1. Open the application.
+2. Choose a tab for the PDF task you want to perform.
+3. Click `Add PDFs` or drag PDF files into the file list.
+4. Review the page count preview for selected files.
+5. Enter page ranges when splitting or extracting pages.
+6. Choose a friendly rotation option when rotating PDFs.
+7. Select an output file or folder when prompted.
+8. Wait for the progress bar to complete, then confirm the success message.
 
-- `main.py` creates the Qt application and opens the main window.
-- `ui/main_window.py` defines the tabbed interface, toolbar, dialogs, status messages, settings, operation wiring, and footer branding.
-- `ui/main_window.py` also runs PDF operations on a worker thread so the interface remains responsive.
-- `ui/widgets.py` provides reusable drag-and-drop PDF list widgets with page count previews.
-- `services/` contains focused classes for each PDF operation. These modules raise `PdfToolkitError` so the UI can show friendly error messages.
+## Screenshots
+
+Screenshots can be added here after packaging or portfolio capture.
+
+## Project Architecture
+
+- `main.py` starts the PyQt6 application.
+- `ui/main_window.py` builds the main tabbed desktop interface, toolbar, theme toggle, progress handling, operation workers, and footer branding.
+- `ui/widgets.py` contains reusable PDF file list widgets with drag-and-drop support and page count previews.
+- `services/common.py` contains shared validation, page counting, PDF reading, and page-range parsing helpers.
+- `services/merger.py` merges multiple PDFs into one output file.
+- `services/splitter.py` splits one PDF into multiple files by page ranges.
+- `services/extractor.py` extracts selected pages into a new PDF.
+- `services/rotator.py` rotates PDF pages.
+- `services/compressor.py` performs best-effort PDF optimization using pypdf.
 
 ## Compression Notes
 
-The compression tab performs best-effort optimization using pypdf. It compresses page content streams and rewrites the PDF, which can reduce some documents. It does not downsample images, remove embedded fonts, or perform advanced object optimization. For stronger compression, integrate Ghostscript, qpdf, or a dedicated commercial PDF engine.
+PDF Toolkit uses pypdf's available stream compression and PDF rewriting features. This can reduce some PDFs, but it does not downsample images, remove embedded fonts, or perform advanced object optimization. For stronger compression, a future version could integrate Ghostscript, qpdf, or another dedicated PDF engine.
 
 ## Future Upgrades
 
-- Password protection and unlocking
+- PDF password protection
 - OCR text extraction
 - PDF to Word conversion
-- Digital signing
+- PDF signing
 - Batch processing queues
 - Image downsampling options
 - Per-page rotate, delete, and reorder tools
 - Preview thumbnails
+
+## Branding
+
+Application: PDF Toolkit  
+Created by: Isaac Gazula  
+Version: 1.0
