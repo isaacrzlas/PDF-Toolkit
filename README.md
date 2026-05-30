@@ -59,10 +59,6 @@ python main.py
 7. Select an output file or folder when prompted.
 8. Wait for the progress bar to complete, then confirm the success message.
 
-## Screenshots
-
-Screenshots can be added here after packaging or portfolio capture.
-
 ## Project Architecture
 
 - `main.py` starts the PyQt6 application.
